@@ -2,6 +2,7 @@
 import strategyPattern.*;
 import observerPattern.*;
 import singletonPattern.*;
+import factoryPattern.*;
 
 public class Main {
 
@@ -35,10 +36,28 @@ public class Main {
         // Singleton instance2 = Singleton.getInstance();
         // System.out.println("Instance 2: " + instance2.getInstanceID());
 
-        Runnable instanceT1 = new SingletonThreadTest();
-        Runnable instanceT2 = new SingletonThreadTest();
+        // Runnable instanceT1 = new SingletonThreadTest();
+        // Runnable instanceT2 = new SingletonThreadTest();
 
-        new Thread(instanceT1).start();
-        new Thread(instanceT2).start();
+        // new Thread(instanceT1).start();
+        // new Thread(instanceT2).start();
+
+        // ========================= Factory Pattern ===========================
+        EnemyFactory factory = new EnemyFactory();
+
+        for (int i = 1; i < 50; i++) {
+            Enemy enemy = null;
+
+            if ((i % 2) == 0)
+                enemy = factory.createEnemy("A");
+            else
+                enemy = factory.createEnemy("Z");
+            
+            enemy.seekPlayer();
+            enemy.attackPlayer();
+            enemy.damage();
+
+            System.out.println("==============================================");
+        }
     }
 }
