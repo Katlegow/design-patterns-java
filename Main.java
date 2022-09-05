@@ -2,6 +2,7 @@
 import builderPattern.*;
 import factoryPattern.*;
 import observerPattern.*;
+import prototypePattern.*;
 import singletonPattern.*;
 import strategyPattern.*;
 
@@ -61,19 +62,28 @@ public class Main {
     //     System.out.println("==============================================");
     // }
 
-    // ======================== Builder Pattern ============================
-    RobotBuilder builder = new RobotBuilder();
+    // ======================== Builder Pattern ================================
+    // RobotBuilder builder = new RobotBuilder();
 
-    Robot robot = builder.withHead("Plastic head")
-                      .withHands("Elastic hands")
-                      .withManyHands(1000)
-                      .withTorso("Steal torso")
-                      .withLegs("Wheel legs")
-                      .withManyLegs(60)
-                      .build();
+    // Robot robot = builder.withHead("Plastic head")
+    //                   .withHands("Elastic hands")
+    //                   .withManyHands(1000)
+    //                   .withTorso("Steal torso")
+    //                   .withLegs("Wheel legs")
+    //                   .withManyLegs(60)
+    //                   .build();
 
-    System.out.println("Robot Succesfully Built!");
+    // System.out.println("Robot Succesfully Built!");
 
-    System.out.println(robot);
+    // System.out.println(robot);
+
+    // ======================= Prototype Pattern ===============================
+
+    Sheep sally = new Sheep();
+
+    Sheep dolly = (Sheep)sally.makeCopy();
+
+    System.out.println("Sally hashCode: " + System.identityHashCode(sally));
+    System.out.println("Dolly hashCode: " + System.identityHashCode(dolly));
   }
 }
